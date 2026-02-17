@@ -2,39 +2,47 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Shubham Goyal - Staff Engineer</title>
+<title>Shubham Goyal - Full Stack Engineer</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { font-size: 11pt; }
-  body { font-family: 'Calibri', Arial, sans-serif; background: #f0f0f0; color: #111; line-height: 1.5; }
-  .page { background: #fff; width: 210mm; min-height: 297mm; margin: 24px auto; padding: 18mm; box-shadow: 0 2px 16px rgba(0,0,0,0.12); }
-  .header-name { font-size: 22pt; font-weight: 700; margin-bottom: 2px; }
-  .header-title { font-size: 11pt; color: #444; margin-bottom: 5px; }
-  .header-contact { font-size: 10pt; color: #333; margin-bottom: 4px; }
+  html { font-size: 10.5pt; }
+  body { font-family: 'Calibri', Arial, sans-serif; background: #f0f0f0; color: #111; line-height: 1.4; }
+  .page { background: #fff; width: 210mm; margin: 24px auto; padding: 16mm 18mm; box-shadow: 0 2px 16px rgba(0,0,0,0.12); }
+  .header-name { font-size: 20pt; font-weight: 700; margin-bottom: 2px; }
+  .header-title { font-size: 10.5pt; color: #444; margin-bottom: 4px; }
+  .header-contact { font-size: 9.5pt; color: #333; margin-bottom: 3px; }
   .header-contact a { color: #333; text-decoration: none; }
-  hr { border: none; border-top: 1.5px solid #111; margin: 10px 0 12px 0; }
-  hr.thin { border-top: 1px solid #ccc; margin: 9px 0; }
-  .section { margin-bottom: 14px; }
-  .section-heading { font-size: 10.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; border-bottom: 1px solid #111; padding-bottom: 2px; margin-bottom: 7px; }
-  .profile-text { font-size: 10.5pt; line-height: 1.55; }
-  .skills-table { width: 100%; border-collapse: collapse; font-size: 10pt; }
-  .skills-table td { padding: 2px 0; vertical-align: top; }
-  .skills-table td:first-child { font-weight: 700; width: 130px; padding-right: 8px; }
+  hr { border: none; border-top: 1.5px solid #111; margin: 8px 0 10px 0; }
+  hr.thin { border-top: 1px solid #ccc; margin: 7px 0; }
+  .section { margin-bottom: 11px; }
+  .section-heading { font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1.1px; border-bottom: 1px solid #111; padding-bottom: 1px; margin-bottom: 6px; }
+  .profile-text { font-size: 10pt; line-height: 1.45; }
+  .skills-table { width: 100%; border-collapse: collapse; font-size: 9.5pt; }
+  .skills-table td { padding: 1px 0; vertical-align: top; }
+  .skills-table td:first-child { font-weight: 700; width: 120px; padding-right: 8px; }
   .skills-table td:last-child { color: #333; }
-  .job { margin-bottom: 4px; }
-  .job-title-line { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-  .job-title { font-size: 11pt; font-weight: 700; }
-  .job-date { font-size: 10pt; color: #444; white-space: nowrap; }
-  .job-company { font-size: 10.5pt; font-weight: 600; color: #333; margin-bottom: 1px; }
-  .job-meta { font-size: 9.5pt; color: #555; margin-bottom: 5px; }
-  .bullets { list-style: disc; padding-left: 18px; }
-  .bullets li { font-size: 10.5pt; line-height: 1.5; margin-bottom: 3px; }
+  .job { margin-bottom: 3px; }
+  .job-title-line { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-left: 0.5em; }
+  .job-title { font-size: 10pt; font-weight: 600; }
+  .job-date { font-size: 9.5pt; color: #444; white-space: nowrap; }
+  .job-company { font-size: 10pt; font-weight: 600; color: #333; margin-bottom: 1px; }
+  .job-meta { font-size: 9pt; color: #555; margin-bottom: 4px; margin-left: 18px; }
+  .job-company { font-size: 11pt; font-weight: 700; margin-top: 6px; margin-bottom: 6px; }
+  .job-company-line { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .bullets { list-style: disc; padding-left: 18px; margin-top: 2px; }
+  .bullets li { font-size: 10pt; line-height: 1.4; margin-bottom: 2px; }
   .edu-title-line { display: flex; justify-content: space-between; align-items: baseline; }
-  .edu-title { font-size: 11pt; font-weight: 700; }
-  .edu-date { font-size: 10pt; color: #444; }
-  .edu-school { font-size: 10.5pt; font-weight: 600; color: #333; margin-bottom: 2px; }
-  .edu-detail { font-size: 10pt; color: #555; }
-  @media print { body { background: white; } .page { margin: 0; box-shadow: none; width: 100%; padding: 14mm 16mm; } @page { size: A4; margin: 0; } }
+  .edu-title { font-size: 10.5pt; font-weight: 700; }
+  .edu-date { font-size: 9.5pt; color: #444; }
+  .edu-school { font-size: 10pt; font-weight: 600; color: #333; margin-bottom: 1px; }
+  .edu-detail { font-size: 9.5pt; color: #555; }
+  .page-break { page-break-before: always; }
+  @media print { 
+    body { background: white; } 
+    .page { margin: 0; box-shadow: none; width: 100%; padding: 14mm 16mm; } 
+    @page { size: A4; margin: 0; } 
+    .page-break { page-break-before: always; }
+  }
 </style>
 </head>
 <body>
@@ -56,9 +64,9 @@
   </div>
   <div class="section">
     <div class="section-heading">Experience</div>
+    <div class="job-company-line"><div class="job-company">Riot Games, Singapore</div><div class="job-date">February 2022 - February 2026</div></div>
     <div class="job">
       <div class="job-title-line"><div class="job-title">Senior Software Engineer - 2XKO</div><div class="job-date">November 2022 - February 2026</div></div>
-      <div class="job-company">Riot Games, Singapore</div>
       <div class="job-meta">Platforms: Windows, PlayStation 5, Xbox Series X</div>
       <ul class="bullets">
         <li>Shipped 2XKO - a 2v2 tag fighter - that debuted at <a href="https://blog.playstation.com/2026/02/04/playstation-store-january-2026s-top-downloads/#:~:text=2XKO" target="_blank">#3 on Playstation's free-to-play downloads.</a></li>
@@ -75,7 +83,6 @@
     <hr class="thin">
     <div class="job">
       <div class="job-title-line"><div class="job-title">Software Engineer - Legends of Runeterra</div><div class="job-date">February 2022 - November 2022</div></div>
-      <div class="job-company">Riot Games, Singapore</div>
       <div class="job-meta">Platforms: Windows, iOS, Android</div>
       <ul class="bullets">
         <li>Full-stack engineer on the tournament system across .NET backend services and Unity client. Internally transferred to the 2XKO after 9 months.</li>
@@ -84,9 +91,9 @@
       </ul>
     </div>
     <hr class="thin">
+    <div class="job-company-line page-break"><div class="job-company">Mighty Bear Games, Singapore</div><div class="job-date">July 2018 - January 2022</div></div>
     <div class="job">
       <div class="job-title-line"><div class="job-title">Engineering Lead - Best Friends Cafe: Merge Dreams</div><div class="job-date">July 2021 - January 2022</div></div>
-      <div class="job-company">Mighty Bear Games, Singapore</div>
       <div class="job-meta">Platforms: iOS, Android</div>
       <ul class="bullets">
         <li>Shipped a free-to-play collaborative merge game in a small, fast-moving team.</li>
@@ -98,7 +105,6 @@
     <hr class="thin">
     <div class="job">
       <div class="job-title-line"><div class="job-title">Backend Engineering Lead - Disney Melee Mania</div><div class="job-date">October 2020 - July 2021</div></div>
-      <div class="job-company">Mighty Bear Games, Singapore</div>
       <div class="job-meta">Platforms: iOS, macOS, tvOS (Apple Arcade)</div>
       <ul class="bullets">
         <li>Shipped 3v3 MOBA - which was the studio's most ambitious project - working closely with Disney and Apple.</li>
@@ -111,7 +117,6 @@
     <hr class="thin">
     <div class="job">
       <div class="job-title-line"><div class="job-title">Full Stack Engineer - Butter Royale</div><div class="job-date">May 2019 - October 2020</div></div>
-      <div class="job-company">Mighty Bear Games, Singapore</div>
       <div class="job-meta">Platforms: iOS, macOS, tvOS (Apple Arcade)</div>
       <ul class="bullets">
         <li>Shipped a 32-player battle royale on Apple Arcade in 6 months with a small team. Liaised directly with Apple on architecture decisions and a 99.9% server uptime commitment.</li>
@@ -124,7 +129,6 @@
     <hr class="thin">
     <div class="job">
       <div class="job-title-line"><div class="job-title">Backend Engineer - World of Legends</div><div class="job-date">July 2018 - April 2019</div></div>
-      <div class="job-company">Mighty Bear Games, Singapore</div>
       <div class="job-meta">Platforms: iOS, Android</div>
       <ul class="bullets">
         <li>Re-architected a distributed monolith into microservices. Introduced gRPC for inter-service communication with distributed tracing using Zipkin.</li>
@@ -132,9 +136,9 @@
       </ul>
     </div>
     <hr class="thin">
+    <div class="job-company">J.P. Morgan Chase, Singapore</div>
     <div class="job">
       <div class="job-title-line"><div class="job-title">Associate - Distributed Payment Platforms</div><div class="job-date">July 2015 - June 2018</div></div>
-      <div class="job-company">J.P. Morgan Chase, Singapore</div>
       <ul class="bullets">
         <li>Worked on a greenfield global microservices payment platform for high and low value transactions. This was the team exploring Agile methodology and inspired by the Netflix stack - leveraging microservices, Cassandra, Kafka and Eureka.</li>
         <li>Worked on a high-volume Java 6 monolith handling low-value APAC payments. This was a traditional waterfall development cycle.</li>
