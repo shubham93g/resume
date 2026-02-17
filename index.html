@@ -37,6 +37,15 @@
   .edu-school { font-size: 10pt; font-weight: 600; color: #333; margin-bottom: 1px; }
   .edu-detail { font-size: 9.5pt; color: #555; }
   .page-break { page-break-before: always; }
+  @media screen and (max-width: 768px) {
+    html { font-size: 12pt; }
+    .page { width: 100%; max-width: 100%; padding: 12mm; margin: 0; box-shadow: none; }
+    .header-name { font-size: 18pt; }
+    .job-title-line, .job-company-line, .edu-title-line { flex-direction: column; align-items: flex-start; gap: 2px; }
+    .job-date, .edu-date { font-size: 10pt; margin-left: 0.5em; }
+    .bullets { padding-left: 20px; margin-left: 0; }
+    .job-meta { margin-left: 0.5em; }
+  }
   @media print { 
     body { background: white; } 
     .page { margin: 0; box-shadow: none; width: 100%; padding: 14mm 16mm; } 
