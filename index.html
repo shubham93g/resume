@@ -36,6 +36,10 @@
   .job { margin-bottom: 3px; }
   .job-line { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-left: 0.5em; margin-bottom: 2px; } /* indented under company */
   .job-title { font-size: 10pt; font-weight: 600; }
+  .job-title a { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: rgba(0,0,0,0.4); }
+  .job-title a::after { content: ' ↗'; font-size: 7.5pt; font-weight: 400; opacity: 0.35; }
+  .job-title a:hover { text-decoration-style: solid; text-decoration-color: rgba(0,0,0,0.7); }
+  .job-title a:hover::after { opacity: 0.7; }
   .date { font-size: 9.5pt; color: #444; white-space: nowrap; }
   .job-meta, .company-meta { font-size: 9pt; color: #555; margin-bottom: 4px; }
   .job-meta { margin-left: 18px; } /* aligns with bullets */
@@ -95,7 +99,7 @@
     <div class="section-heading">Experience</div>
     <div class="company-line"><div class="company">Riot Games, Singapore</div><div class="date">March 2022 - February 2026</div></div>
     <div class="job">
-      <div class="job-line"><div class="job-title">Senior Software Engineer - 2XKO</div><div class="date">November 2022 - February 2026</div></div>
+      <div class="job-line"><div class="job-title">Senior Software Engineer - <a href="https://www.youtube.com/watch?v=TrUde1RDyM4" target="_blank">2XKO</a></div><div class="date">November 2022 - February 2026</div></div>
       <div class="job-meta">Stack: C++, Unreal Engine, Go | Platforms: Windows, PlayStation 5, Xbox Series X</div>
       <ul class="bullets">
         <li>Shipped 2XKO - a 2v2 tag fighter - that debuted at <a href="https://blog.playstation.com/2026/02/04/playstation-store-january-2026s-top-downloads/#:~:text=2XKO" target="_blank">#3 on PlayStation's free-to-play downloads.</a></li>
@@ -111,7 +115,7 @@
     </div>
     <hr class="thin">
     <div class="job">
-      <div class="job-line"><div class="job-title">Software Engineer - Legends of Runeterra</div><div class="date">March 2022 - November 2022</div></div>
+      <div class="job-line"><div class="job-title">Software Engineer - <a href="https://www.youtube.com/watch?v=qyhuHsiKpQY" target="_blank">Legends of Runeterra</a></div><div class="date">March 2022 - November 2022</div></div>
       <div class="job-meta">Stack: C#, Unity Engine, .NET | Platforms: Windows, iOS, Android</div>
       <ul class="bullets">
         <li>Full-stack engineer on the tournament system across .NET backend services and Unity client. Internally transferred to 2XKO after 8 months.</li>
@@ -123,7 +127,7 @@
     <div class="company-line"><div class="company">Mighty Bear Games, Singapore</div><div class="date">July 2018 - February 2022</div></div>
     <div class="company-meta">Stack: C#, Unity Engine, Java, Spring Boot, AWS, DynamoDB, Redis</div>
     <div class="job page-break">
-      <div class="job-line"><div class="job-title">Senior Software Engineer - Tech Lead - Best Friends Cafe: Merge Dreams</div><div class="date">July 2021 - February 2022</div></div>
+      <div class="job-line"><div class="job-title">Senior Software Engineer - Tech Lead - <a href="https://youtu.be/U3ixIlHfSj8?si=xIjJmeo8YY9_Nji_&t=122" target="_blank">Best Friends Cafe: Merge Dreams</a></div><div class="date">July 2021 - February 2022</div></div>
       <div class="job-meta">Platforms: iOS, Android</div>
       <ul class="bullets">
         <li>Shipped a free-to-play collaborative merge game in a small, fast-moving team.</li>
@@ -134,7 +138,7 @@
     </div>
     <hr class="thin">
     <div class="job">
-      <div class="job-line"><div class="job-title">Senior Software Engineer - Backend Lead - Disney Melee Mania</div><div class="date">October 2020 - July 2021</div></div>
+      <div class="job-line"><div class="job-title">Senior Software Engineer - Backend Lead - <a href="https://www.youtube.com/watch?v=m6VR64hQJ10" target="_blank">Disney Melee Mania</a></div><div class="date">October 2020 - July 2021</div></div>
       <div class="job-meta">Platforms: iOS, macOS, tvOS (Apple Arcade)</div>
       <ul class="bullets">
         <li>Shipped 3v3 MOBA - which was the studio's most ambitious project - working closely with Disney and Apple.</li>
@@ -146,7 +150,7 @@
     </div>
     <hr class="thin">
     <div class="job">
-      <div class="job-line"><div class="job-title">Software Engineer - Full Stack - Butter Royale</div><div class="date">May 2019 - October 2020</div></div>
+      <div class="job-line"><div class="job-title">Software Engineer - Full Stack - <a href="https://www.youtube.com/watch?v=STP0E8WfGM8" target="_blank">Butter Royale</a></div><div class="date">May 2019 - October 2020</div></div>
       <div class="job-meta">Platforms: iOS, macOS, tvOS (Apple Arcade)</div>
       <ul class="bullets">
         <li>Shipped a 32-player battle royale on Apple Arcade in 6 months with a small team. Liaised directly with Apple on architecture decisions and a 99.9% server uptime commitment.</li>
@@ -158,7 +162,7 @@
     </div>
     <hr class="thin">
     <div class="job">
-      <div class="job-line"><div class="job-title">Software Engineer - Backend - World of Legends</div><div class="date">July 2018 - April 2019</div></div>
+      <div class="job-line"><div class="job-title">Software Engineer - Backend - <a href="https://www.youtube.com/watch?v=dmApo63V_34" target="_blank">World of Legends</a></div><div class="date">July 2018 - April 2019</div></div>
       <div class="job-meta">Platforms: iOS, Android</div>
       <ul class="bullets">
         <li>Re-architected a distributed monolith into microservices. Introduced gRPC for inter-service communication with distributed tracing using Zipkin.</li>
