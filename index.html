@@ -27,38 +27,27 @@
   .job-title { font-size: 10pt; font-weight: 600; }
   .job-date { font-size: 9.5pt; color: #444; white-space: nowrap; }
   .job-meta { font-size: 9pt; color: #555; margin-bottom: 4px; margin-left: 18px; }
-  .job-company { font-size: 11pt; font-weight: 700; margin-top: 6px; margin-bottom: 6px; }
+  .job-company { font-size: 10pt; font-weight: 700; margin-top: 6px; margin-bottom: 6px; }
   .job-company-line { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
   .bullets { list-style: disc; padding-left: 18px; margin-top: 2px; }
   .bullets li { font-size: 10pt; line-height: 1.4; margin-bottom: 2px; }
-  .edu-title-line { display: flex; justify-content: space-between; align-items: baseline; }
-  .edu-title { font-size: 10.5pt; font-weight: 700; }
-  .edu-date { font-size: 9.5pt; color: #444; }
-  .edu-school { font-size: 10pt; font-weight: 600; color: #333; margin-bottom: 1px; }
-  .edu-detail { font-size: 9.5pt; color: #555; }
   .page-break { page-break-before: always; }
   @media screen and (max-width: 768px) {
     html { font-size: 14pt; }
     body { background: white; }
-    .page { width: 100%; max-width: 100%; padding: 16px; margin: 0; box-shadow: none; }
-    .header-name { font-size: 20pt; }
+    .page { width: 100%; padding: 16px; margin: 0; box-shadow: none; }
     .header-title { font-size: 11pt; }
     .header-contact { font-size: 10pt; }
     .profile-text { font-size: 11pt; line-height: 1.5; }
     .section-heading { font-size: 11pt; margin-bottom: 8px; }
     .skills-table { font-size: 10pt; }
     .skills-table td { padding: 3px 0; }
-    .job-company { font-size: 12pt; margin-top: 10px; margin-bottom: 8px; }
+    .job-company { font-size: 11pt; margin-top: 10px; margin-bottom: 8px; }
     .job-title { font-size: 11pt; }
-    .job-date { font-size: 9.5pt; }
     .job-meta { font-size: 9.5pt; margin-left: 0; margin-bottom: 6px; }
     .bullets li { font-size: 11pt; line-height: 1.5; margin-bottom: 4px; }
     .job-title-line { margin-left: 0; }
     .bullets { margin-left: 20px; padding-left: 0; }
-    .edu-title { font-size: 11pt; }
-    .edu-school { font-size: 10pt; }
-    .edu-date { font-size: 9.5pt; }
-    .edu-detail { font-size: 9.5pt; }
   }
   @media screen and (max-width: 768px) and (orientation: landscape) {
     html { font-size: 9pt; }
@@ -68,22 +57,22 @@
     .profile-text { font-size: 8.5pt; line-height: 1.35; }
     .section-heading { font-size: 8.5pt; }
     .skills-table { font-size: 8pt; }
-    .job-company { font-size: 9pt; }
-    .job-title { font-size: 8.5pt; }
+    .job-company, .job-title { font-size: 8.5pt; }
     .job-date { font-size: 7.5pt; }
     .job-meta { font-size: 7.5pt; }
     .bullets li { font-size: 8.5pt; line-height: 1.35; }
-    .edu-title { font-size: 8.5pt; }
-    .edu-school { font-size: 8pt; }
-    .edu-date { font-size: 7.5pt; }
-    .edu-detail { font-size: 7.5pt; }
     .page { padding: 10px; }
   }
-  @media print { 
-    body { background: white; } 
-    .page { margin: 0; box-shadow: none; width: 100%; padding: 14mm 16mm; } 
-    @page { size: A4; margin: 0; } 
-    .page-break { page-break-before: always; }
+  @media print {
+    body { background: white; }
+    .page { margin: 0; box-shadow: none; width: 100%; padding: 14mm 16mm; }
+    @page { size: A4; margin: 0; }
+    .page-break { page-break-before: always; padding-top: 14mm; }
+    .section { margin-bottom: 8px; }
+    hr.thin { margin: 3px 0; }
+    .job { margin-bottom: 1px; }
+    .job-company { margin-top: 2px; margin-bottom: 2px; }
+    .bullets li { margin-bottom: 1px; }
   }
 </style>
 </head>
@@ -190,12 +179,11 @@
   </div>
   <div class="section">
     <div class="section-heading">Education</div>
-    <div class="edu-title-line">
-      <div class="edu-title">Bachelor of Engineering in Computer Science</div>
-      <div class="edu-date">June 2011 - June 2015</div>
-    </div>
-    <div class="edu-school">Nanyang Technological University, Singapore</div>
-    <div class="edu-detail">Second Class Honours (Upper Division) - GPA 4.09 / 5.0 &nbsp;|&nbsp; Minor in Entrepreneurship</div>
+    <div class="job-company-line"><div class="job-company">Nanyang Technological University, Singapore</div><div class="job-date">June 2011 - June 2015</div></div>
+    <div class="job-title-line"><div class="job-title">Bachelor of Engineering in Computer Science</div></div>
+    <ul class="bullets">
+      <li>Second Class Honours (Upper Division) - GPA 4.09 / 5.0 &nbsp;|&nbsp; Minor in Entrepreneurship</li>
+    </ul>
   </div>
 </div>
 </body>
