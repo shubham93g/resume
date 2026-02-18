@@ -36,10 +36,14 @@
   .job { margin-bottom: 3px; }
   .job-line { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-left: 0.5em; margin-bottom: 2px; } /* indented under company */
   .job-title { font-size: 10pt; font-weight: 600; }
-  .job-title a { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: rgba(0,0,0,0.4); }
-  .job-title a::after { content: ' ↗'; font-size: 7.5pt; font-weight: 400; opacity: 0.35; }
+  .job-title a { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: rgba(0,0,0,0.6); }
+  .job-title a::after { content: ' ↗'; font-size: 0.75em; font-weight: 400; opacity: 0.35; }
   .job-title a:hover { text-decoration-style: solid; text-decoration-color: rgba(0,0,0,0.7); }
   .job-title a:hover::after { opacity: 0.7; }
+  .bullets a { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: rgba(0,0,0,0.6); }
+  .bullets a::after { content: ' ↗'; font-size: 0.8em; font-weight: 400; opacity: 0.35; }
+  .bullets a:hover { text-decoration-style: solid; text-decoration-color: rgba(0,0,0,0.7); }
+  .bullets a:hover::after { opacity: 0.7; }
   .date { font-size: 9.5pt; color: #444; white-space: nowrap; }
   .job-meta, .company-meta { font-size: 9pt; color: #555; margin-bottom: 4px; }
   .job-meta { margin-left: 18px; } /* aligns with bullets */
@@ -52,7 +56,7 @@
 
   /* Mobile portrait — full width, larger text for readability */
   @media screen and (max-width: 768px) {
-    html { font-size: 14pt; }
+    html { font-size: 11pt; }
     body { background: white; }
     .page { width: 100%; padding: 16px; margin: 0; box-shadow: none; }
     .header-title { font-size: 11pt; }
@@ -62,8 +66,9 @@
 
     .company { font-size: 11pt; margin-top: 10px; margin-bottom: 8px; }
     .job-title { font-size: 11pt; }
-    .job-meta { font-size: 9.5pt; margin-left: 0; margin-bottom: 6px; } /* remove indent — no room on mobile */
+    .job-meta, .company-meta { font-size: 9.5pt; margin-left: 0; margin-bottom: 6px; } /* remove indent — no room on mobile */
     .bullets li { font-size: 11pt; line-height: 1.5; margin-bottom: 4px; }
+    .job-line, .company-line { flex-direction: column; align-items: flex-start; gap: 1px; }
     .job-line { margin-left: 0; } /* remove indent — no room on mobile */
     .bullets { margin-left: 20px; padding-left: 0; }
   }
