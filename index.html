@@ -5,59 +5,84 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shubham Goyal - Full Stack Engineer</title>
 <style>
+  /* Reset */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* Base: desktop — A4-width card on screen */
   html { font-size: 10.5pt; }
   body { font-family: 'Calibri', Arial, sans-serif; background: #f0f0f0; color: #111; line-height: 1.4; }
   .page { background: #fff; width: 210mm; margin: 24px auto; padding: 16mm 18mm; box-shadow: 0 2px 16px rgba(0,0,0,0.12); }
+
+  /* Header */
   .header-name { font-size: 20pt; font-weight: 700; margin-bottom: 2px; }
   .header-title { font-size: 10.5pt; color: #444; margin-bottom: 4px; }
   .header-contact { font-size: 9.5pt; color: #333; margin-bottom: 3px; }
-  .header-contact a { color: #1a0dab; text-decoration: underline; }
+  .header-contact a { color: #1a0dab; text-decoration: underline; } /* visually identifiable as hyperlinks */
+
+  /* Dividers: thick between header and content, thin between jobs */
   hr { border: none; border-top: 1.5px solid #111; margin: 8px 0 10px 0; }
   hr.thin { border-top: 1px solid #ccc; margin: 7px 0; }
+
+  /* Sections */
   .section { margin-bottom: 11px; }
   .section-heading { font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1.1px; border-bottom: 1px solid #111; padding-bottom: 1px; margin-bottom: 6px; }
-  .profile-text { font-size: 10pt; line-height: 1.45; }
+  .summary { font-size: 10pt; line-height: 1.45; }
+
+  /* Skills */
   .skills-table { width: 100%; border-collapse: collapse; font-size: 9.5pt; }
   .skills-table td { padding: 1px 0; vertical-align: top; }
   .skills-table td:first-child { font-weight: 700; width: 120px; padding-right: 8px; }
   .skills-table td:last-child { color: #333; }
+
+  /* Content hierarchy: company > job > meta > bullets */
+  .company { font-size: 10pt; font-weight: 700; margin-top: 6px; }
+  .company-line { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 2px; }
   .job { margin-bottom: 3px; }
-  .job-title-line { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-left: 0.5em; }
+  .job-line { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-left: 0.5em; margin-bottom: 2px; } /* indented under company */
   .job-title { font-size: 10pt; font-weight: 600; }
-  .job-date { font-size: 9.5pt; color: #444; white-space: nowrap; }
-  .job-meta { font-size: 9pt; color: #555; margin-bottom: 4px; margin-left: 18px; }
-  .job-company { font-size: 10pt; font-weight: 700; margin-top: 6px; margin-bottom: 6px; }
-  .job-company-line { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .date { font-size: 9.5pt; color: #444; white-space: nowrap; }
+  .job-meta, .company-meta { font-size: 9pt; color: #555; margin-bottom: 4px; }
+  .job-meta { margin-left: 18px; } /* aligns with bullets */
+  .company-meta { margin-left: 0.5em; } /* aligns with job-line */
   .bullets { list-style: disc; padding-left: 18px; margin-top: 2px; }
   .bullets li { font-size: 10pt; line-height: 1.4; margin-bottom: 2px; }
+
+  /* Page break at Mighty Bear to split content onto page 2 */
   .page-break { page-break-before: always; }
+
+  /* Mobile portrait — full width, larger text for readability */
   @media screen and (max-width: 768px) {
     html { font-size: 14pt; }
     body { background: white; }
     .page { width: 100%; padding: 16px; margin: 0; box-shadow: none; }
     .header-title { font-size: 11pt; }
     .header-contact { font-size: 10pt; }
-    .profile-text { font-size: 11pt; line-height: 1.5; }
+    .summary { font-size: 11pt; line-height: 1.5; }
     .section-heading { font-size: 11pt; margin-bottom: 8px; }
     .skills-table { font-size: 10pt; }
     .skills-table td { padding: 3px 0; }
-    .job-company { font-size: 11pt; margin-top: 10px; margin-bottom: 8px; }
+    .company { font-size: 11pt; margin-top: 10px; margin-bottom: 8px; }
     .job-title { font-size: 11pt; }
-    .job-meta { font-size: 9.5pt; margin-left: 0; margin-bottom: 6px; }
+    .job-meta { font-size: 9.5pt; margin-left: 0; margin-bottom: 6px; } /* remove indent — no room on mobile */
     .bullets li { font-size: 11pt; line-height: 1.5; margin-bottom: 4px; }
-    .job-title-line { margin-left: 0; }
+    .job-line { margin-left: 0; } /* remove indent — no room on mobile */
     .bullets { margin-left: 20px; padding-left: 0; }
   }
   @media print {
-    body { background: white; }
+    /* Remove screen chrome */
+    body { background: white; line-height: 1.3; } /* tighter line-height recovers significant space across all wrapped bullet lines */
     .page { margin: 0; box-shadow: none; width: 100%; padding: 14mm 16mm; }
     @page { size: A4; margin: 0; }
+    /* Restore top padding lost when page-break fires mid-.page div */
     .page-break { page-break-before: always; padding-top: 14mm; }
-    .section { margin-bottom: 8px; }
-    hr.thin { margin: 3px 0; }
+    /* Tighten vertical spacing to fit within 2 A4 pages */
+    .section { margin-bottom: 7px; }
+    hr.thin { margin: 2px 0; }
     .job { margin-bottom: 1px; }
-    .job-company { margin-top: 2px; margin-bottom: 2px; }
+    .company { margin-top: 2px; }
+    .company-line { margin-bottom: 1px; }
+    .job-line { margin-bottom: 0; } /* no gap needed between title and meta/bullets in print */
+    .job-meta, .company-meta { margin-bottom: 2px; }
     .bullets li { margin-bottom: 1px; }
   }
 </style>
@@ -70,7 +95,7 @@
   <hr>
   <div class="section">
     <div class="section-heading">Summary</div>
-    <p class="profile-text">10+ years of full-stack engineering experience across AAA games and fintech. Track record of designing and shipping complex, cross-team systems - from monetization systems on 2XKO at Riot Games to high-availability global payment platforms at J.P. Morgan Chase. Spent ~3.5 years shipping multiple titles in a small, fast-moving startup - Mighty Bear Games - comfortable with rapid iteration, tight timelines, and wearing multiple hats. Comfortable across the full stack: real-time game systems in Unreal/Unity, backend services in Go/C#/Java, and cloud infrastructure on AWS. Known for building extensible systems consumed by multiple teams, working with product and design, navigating legal and compliance requirements, and making architecture decisions that outlast individual features.</p>
+    <p class="summary">10+ years of full-stack engineering experience across AAA games and fintech. Track record of designing and shipping complex, cross-team systems - from monetization systems on 2XKO at Riot Games to high-availability global payment platforms at J.P. Morgan Chase. Spent ~3.5 years shipping multiple titles in a small, fast-moving startup - Mighty Bear Games - comfortable with rapid iteration, tight timelines, and wearing multiple hats. Comfortable across the full stack: real-time game systems in Unreal/Unity, backend services in Go/C#/Java, and cloud infrastructure on AWS. Known for building extensible systems consumed by multiple teams, working with product and design, navigating legal and compliance requirements, and making architecture decisions that outlast individual features.</p>
   </div>
   <div class="section">
     <div class="section-heading">Technical Skills</div>
@@ -81,10 +106,10 @@
   </div>
   <div class="section">
     <div class="section-heading">Experience</div>
-    <div class="job-company-line"><div class="job-company">Riot Games, Singapore</div><div class="job-date">March 2022 - February 2026</div></div>
+    <div class="company-line"><div class="company">Riot Games, Singapore</div><div class="date">March 2022 - February 2026</div></div>
     <div class="job">
-      <div class="job-title-line"><div class="job-title">Senior Software Engineer - 2XKO</div><div class="job-date">November 2022 - February 2026</div></div>
-      <div class="job-meta">Platforms: Windows, PlayStation 5, Xbox Series X</div>
+      <div class="job-line"><div class="job-title">Senior Software Engineer - 2XKO</div><div class="date">November 2022 - February 2026</div></div>
+      <div class="job-meta">Platforms: Windows, PlayStation 5, Xbox Series X | Stack: C++, Unreal Engine, Go</div>
       <ul class="bullets">
         <li>Shipped 2XKO - a 2v2 tag fighter - that debuted at <a href="https://blog.playstation.com/2026/02/04/playstation-store-january-2026s-top-downloads/#:~:text=2XKO" target="_blank">#3 on PlayStation's free-to-play downloads.</a></li>
         <li>Designed and implemented Commerce systems for 2XKO client - store, entitlements, wallets and loadouts. Served as subject matter expert and primary point of contact for all teams interfacing with the client layer.</li>
@@ -99,8 +124,8 @@
     </div>
     <hr class="thin">
     <div class="job">
-      <div class="job-title-line"><div class="job-title">Software Engineer - Legends of Runeterra</div><div class="job-date">March 2022 - November 2022</div></div>
-      <div class="job-meta">Platforms: Windows, iOS, Android</div>
+      <div class="job-line"><div class="job-title">Software Engineer - Legends of Runeterra</div><div class="date">March 2022 - November 2022</div></div>
+      <div class="job-meta">Platforms: Windows, iOS, Android | Stack: C#, Unity Engine, .NET</div>
       <ul class="bullets">
         <li>Full-stack engineer on the tournament system across .NET backend services and Unity client. Internally transferred to 2XKO after 8 months.</li>
         <li>Built admin tooling to streamline overview of tournaments for organizers and streamers, reducing live ops overhead.</li>
@@ -108,9 +133,10 @@
       </ul>
     </div>
     <hr class="thin">
-    <div class="job-company-line page-break"><div class="job-company">Mighty Bear Games, Singapore</div><div class="job-date">July 2018 - February 2022</div></div>
+    <div class="company-line page-break"><div class="company">Mighty Bear Games, Singapore</div><div class="date">July 2018 - February 2022</div></div>
+    <div class="company-meta">Stack: C#, Unity Engine, Java, Spring Boot, AWS, DynamoDB, Redis</div>
     <div class="job">
-      <div class="job-title-line"><div class="job-title">Engineering Lead - Best Friends Cafe: Merge Dreams</div><div class="job-date">July 2021 - February 2022</div></div>
+      <div class="job-line"><div class="job-title">Engineering Lead - Best Friends Cafe: Merge Dreams</div><div class="date">July 2021 - February 2022</div></div>
       <div class="job-meta">Platforms: iOS, Android</div>
       <ul class="bullets">
         <li>Shipped a free-to-play collaborative merge game in a small, fast-moving team.</li>
@@ -121,7 +147,7 @@
     </div>
     <hr class="thin">
     <div class="job">
-      <div class="job-title-line"><div class="job-title">Backend Engineering Lead - Disney Melee Mania</div><div class="job-date">October 2020 - July 2021</div></div>
+      <div class="job-line"><div class="job-title">Backend Engineering Lead - Disney Melee Mania</div><div class="date">October 2020 - July 2021</div></div>
       <div class="job-meta">Platforms: iOS, macOS, tvOS (Apple Arcade)</div>
       <ul class="bullets">
         <li>Shipped 3v3 MOBA - which was the studio's most ambitious project - working closely with Disney and Apple.</li>
@@ -133,7 +159,7 @@
     </div>
     <hr class="thin">
     <div class="job">
-      <div class="job-title-line"><div class="job-title">Full Stack Engineer - Butter Royale</div><div class="job-date">May 2019 - October 2020</div></div>
+      <div class="job-line"><div class="job-title">Full Stack Engineer - Butter Royale</div><div class="date">May 2019 - October 2020</div></div>
       <div class="job-meta">Platforms: iOS, macOS, tvOS (Apple Arcade)</div>
       <ul class="bullets">
         <li>Shipped a 32-player battle royale on Apple Arcade in 6 months with a small team. Liaised directly with Apple on architecture decisions and a 99.9% server uptime commitment.</li>
@@ -145,7 +171,7 @@
     </div>
     <hr class="thin">
     <div class="job">
-      <div class="job-title-line"><div class="job-title">Backend Engineer - World of Legends</div><div class="job-date">July 2018 - April 2019</div></div>
+      <div class="job-line"><div class="job-title">Backend Engineer - World of Legends</div><div class="date">July 2018 - April 2019</div></div>
       <div class="job-meta">Platforms: iOS, Android</div>
       <ul class="bullets">
         <li>Re-architected a distributed monolith into microservices. Introduced gRPC for inter-service communication with distributed tracing using Zipkin.</li>
@@ -153,9 +179,10 @@
       </ul>
     </div>
     <hr class="thin">
-    <div class="job-company-line"><div class="job-company">J.P. Morgan Chase, Singapore</div><div class="job-date">July 2015 - June 2018</div></div>
+    <div class="company-line"><div class="company">J.P. Morgan Chase, Singapore</div><div class="date">July 2015 - June 2018</div></div>
     <div class="job">
-      <div class="job-title-line"><div class="job-title">Associate - Distributed Payment Platforms</div></div>
+      <div class="job-line"><div class="job-title">Associate - Distributed Payment Platforms</div></div>
+      <div class="job-meta">Stack: Java, Cassandra, SQL</div>
       <ul class="bullets">
         <li>Worked on a greenfield global microservices payment platform for high and low value transactions. This was the team exploring Agile methodology and inspired by the Netflix stack - leveraging microservices, Cassandra, Kafka and Eureka.</li>
         <li>Worked on a high-volume Java 6 monolith handling low-value APAC payments. This was a traditional waterfall development cycle.</li>
@@ -165,8 +192,8 @@
   </div>
   <div class="section">
     <div class="section-heading">Education</div>
-    <div class="job-company-line"><div class="job-company">Nanyang Technological University, Singapore</div><div class="job-date">June 2011 - June 2015</div></div>
-    <div class="job-title-line"><div class="job-title">Bachelor of Engineering in Computer Science</div></div>
+    <div class="company-line"><div class="company">Nanyang Technological University, Singapore</div><div class="date">June 2011 - June 2015</div></div>
+    <div class="job-line"><div class="job-title">Bachelor of Engineering in Computer Science</div></div>
     <ul class="bullets">
       <li>Second Class Honours (Upper Division) - GPA 4.09 / 5.0 &nbsp;|&nbsp; Minor in Entrepreneurship</li>
     </ul>
