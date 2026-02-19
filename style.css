@@ -45,8 +45,12 @@
 }
 
 /* Base: desktop — A4-width card on screen */
-html { font-size: 10pt; }
-body { font-family: 'Calibri', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.4; }
+html { font-size: 10pt; } /* print fallback — unchanged */
+
+@media screen {
+  html { font-size: calc(10pt + var(--font-offset, 0pt)); }
+}
+body { font-family: 'IBM Plex Sans', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.4; }
 .page { background: var(--page-bg); width: 210mm; margin: 24px auto; padding: 16mm 18mm; box-shadow: 0 2px 16px var(--shadow); }
 
 /* Header */
@@ -101,7 +105,7 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
   z-index: 100;
   user-select: none;
 }
-.toggle-sun, .toggle-moon { font-size: 0.85rem; line-height: 1; transition: opacity 0.2s; }
+.toggle-sun, .toggle-moon { font-size: 13px; line-height: 1; transition: opacity 0.2s; }
 .toggle-sun { opacity: var(--toggle-sun-opacity); }
 .toggle-moon { opacity: var(--toggle-moon-opacity); }
 .toggle-track {
@@ -129,9 +133,58 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
   #theme-toggle { display: none; }
 }
 
+/* Font size control — hidden in print */
+#font-size-control {
+  position: fixed;
+  top: 44px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 100;
+  user-select: none;
+}
+
+#font-size-control button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  min-width: 24px;
+  text-align: center;
+  color: var(--text-muted);
+  padding: 2px 4px;
+  border-radius: 3px;
+  transition: color 0.15s;
+  line-height: 1;
+}
+
+@media (hover: hover) {
+  #font-size-control button:hover:not(:disabled) {
+    color: var(--text);
+  }
+}
+
+#font-size-control button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+#font-size-value {
+  font-size: 13px;
+  color: var(--text-muted);
+  min-width: 20px;
+  text-align: center;
+  line-height: 1;
+}
+
+@media print {
+  #font-size-control { display: none; }
+}
+
 /* Mobile portrait — full width, larger text for readability */
 @media screen and (max-width: 768px) {
-  html { font-size: 11pt; }
+  html { font-size: calc(11pt + var(--font-offset, 0pt)); }
   body { background: var(--page-bg); }
   .page { width: 100%; padding: 16px; margin: 0; box-shadow: none; }
   .summary { line-height: 1.5; }

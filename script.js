@@ -29,3 +29,37 @@ toggle.addEventListener('click', toggleTheme);
 toggle.addEventListener('keydown', function (e) {
   if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleTheme(); }
 });
+
+var FONT_OFFSET_KEY = 'fontOffset';
+var FONT_OFFSET_MIN = -2;
+var FONT_OFFSET_MAX = 4;
+
+var decreaseBtn = document.getElementById('font-decrease');
+var increaseBtn = document.getElementById('font-increase');
+
+(function () {
+  var offset = parseInt(localStorage.getItem(FONT_OFFSET_KEY) || '0', 10);
+  applyFontOffset(offset);
+  updateFontOffsetButtons(offset);
+})();
+
+function applyFontOffset(offset) {
+  document.documentElement.style.setProperty('--font-offset', offset + 'pt');
+}
+
+function changeFontOffset(delta) {
+  var current = parseInt(localStorage.getItem(FONT_OFFSET_KEY) || '0', 10);
+  var next = Math.min(FONT_OFFSET_MAX, Math.max(FONT_OFFSET_MIN, current + delta));
+  applyFontOffset(next);
+  localStorage.setItem(FONT_OFFSET_KEY, String(next));
+  updateFontOffsetButtons(next);
+}
+
+function updateFontOffsetButtons(offset) {
+  decreaseBtn.disabled = offset <= FONT_OFFSET_MIN;
+  increaseBtn.disabled = offset >= FONT_OFFSET_MAX;
+  document.getElementById('font-size-value').textContent = offset > 0 ? '+' + offset : String(offset);
+}
+
+decreaseBtn.addEventListener('click', function () { changeFontOffset(-1); });
+increaseBtn.addEventListener('click', function () { changeFontOffset(+1); });
