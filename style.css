@@ -5,6 +5,9 @@
 :root {
   /* Layout */
   --indent: 18px;
+  --ctrl-size: 13px;  /* icon/text size for fixed controls (toggle, font buttons) */
+  --ctrl-right: 16px; /* right-edge anchor for fixed controls */
+  --ctrl-gap: 6px;    /* internal gap within fixed controls */
   /* Colour */
   --bg: #f0f0f0;
   --page-bg: #fff;
@@ -18,7 +21,7 @@
   --link-deco: rgba(0,0,0,0.6);
   --link-deco-hover: rgba(0,0,0,0.7);
   --shadow: rgba(0,0,0,0.12);
-  --toggle-track: #bbb;
+  --ctrl-bg: #bbb;
   --toggle-knob: white;
   --toggle-sun-opacity: 1;
   --toggle-moon-opacity: 0.35;
@@ -40,7 +43,7 @@
     --link-deco: rgba(255,255,255,0.5);
     --link-deco-hover: rgba(255,255,255,0.7);
     --shadow: rgba(0,0,0,0.5);
-    --toggle-track: #555;
+    --ctrl-bg: #555;
     --toggle-sun-opacity: 0.35;
     --toggle-moon-opacity: 1;
     --toggle-knob-x: 18px; /* knob travel distance */
@@ -97,22 +100,22 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
 #theme-toggle {
   position: fixed;
   top: 14px;
-  right: 16px;
+  right: var(--ctrl-right);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--ctrl-gap);
   cursor: pointer;
   z-index: 100;
   user-select: none;
 }
-.toggle-sun, .toggle-moon { font-size: 13px; line-height: 1; transition: opacity 0.2s; }
+.toggle-sun, .toggle-moon { font-size: var(--ctrl-size); line-height: 1; transition: opacity 0.2s; }
 .toggle-sun { opacity: var(--toggle-sun-opacity); }
 .toggle-moon { opacity: var(--toggle-moon-opacity); }
 .toggle-track {
   width: 38px;
   height: 20px;
   border-radius: 10px;
-  background: var(--toggle-track);
+  background: var(--ctrl-bg);
   position: relative;
   transition: background 0.2s;
   flex-shrink: 0;
@@ -134,27 +137,30 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
 #font-size-control {
   position: fixed;
   top: 44px;
-  right: 16px;
+  right: var(--ctrl-right);
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--ctrl-gap);
   z-index: 100;
   user-select: none;
 }
 
 #font-size-control button {
-  background: none;
+  background: var(--ctrl-bg);
   border: none;
   cursor: pointer;
-  font-size: 13px;
-  min-width: 24px;
-  text-align: center;
+  font-size: var(--ctrl-size);
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--text-muted);
-  padding: 2px 4px;
-  border-radius: 3px;
+  border-radius: 50%;
   transition: color 0.15s;
   line-height: 1;
   touch-action: manipulation;
+  padding: 0;
 }
 
 @media (hover: hover) {
@@ -169,7 +175,7 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
 }
 
 #font-size-value {
-  font-size: 13px;
+  font-size: var(--ctrl-size);
   color: var(--text-muted);
   min-width: 20px;
   text-align: center;
