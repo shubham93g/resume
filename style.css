@@ -55,9 +55,10 @@ html { font-size: 10pt; } /* print fallback — unchanged */
 
 @media screen {
   html { font-size: calc(10pt + var(--font-offset, 0pt)); }
+  .page { width: min(var(--page-width, 210mm), 100%); }
 }
 body { font-family: 'IBM Plex Sans', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.4; }
-.page { background: var(--page-bg); width: 210mm; margin: 24px auto; padding: 16mm 18mm; box-shadow: 0 2px 16px var(--shadow); }
+.page { background: var(--page-bg); margin: 24px auto; padding: 16mm 18mm; box-shadow: 0 2px 16px var(--shadow); }
 
 /* Header */
 .header-name { font-size: 2rem; font-weight: 700; margin-bottom: 2px; }
@@ -78,7 +79,7 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
 
 /* Content hierarchy: company > job > meta > bullets */
 .date { font-size: 0.9rem; color: var(--text-muted); white-space: nowrap; }
-.company { font-size: 1rem; font-weight: 700; margin-top: 6px; }
+.company { font-size: 1rem; font-weight: 700; margin-top: 3px; }
 .company-line { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 2px; }
 .job { margin-bottom: 3px; }
 .job-line { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-left: 0.5em; margin-bottom: 2px; } /* indented under company */
@@ -188,7 +189,6 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
   body { background: var(--page-bg); }
   .page { width: 100%; padding: 16px; margin: 0; box-shadow: none; }
   .section-heading { margin-bottom: 8px; }
-  .company { margin-top: 10px; }
   .job-meta, .company-meta { margin-left: 0; margin-bottom: 6px; } /* remove indent — no room on mobile */
   .bullets li { margin-bottom: 4px; }
   .company-line { flex-direction: column; align-items: flex-start; gap: 1px; }
