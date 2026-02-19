@@ -157,6 +157,7 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
   border-radius: 3px;
   transition: color 0.15s;
   line-height: 1;
+  touch-action: manipulation;
 }
 
 @media (hover: hover) {
