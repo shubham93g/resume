@@ -1,12 +1,15 @@
-var THEME_STORAGE_KEY = 'theme';
-var THEME_ATTR = 'data-theme';
-var DARK = 'dark';
-var LIGHT = 'light';
+// --- Theme ---
 
-var systemThemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+const THEME_STORAGE_KEY = 'theme';
+const THEME_ATTR = 'data-theme';
+const DARK = 'dark';
+const LIGHT = 'light';
 
+const systemThemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+// Apply saved or system theme immediately to avoid flash
 (function () {
-  var saved = localStorage.getItem(THEME_STORAGE_KEY) || (systemThemeQuery.matches ? DARK : LIGHT);
+  const saved = localStorage.getItem(THEME_STORAGE_KEY) || (systemThemeQuery.matches ? DARK : LIGHT);
   document.documentElement.setAttribute(THEME_ATTR, saved);
 })();
 
@@ -18,27 +21,34 @@ systemThemeQuery.addEventListener('change', function (e) {
 });
 
 function toggleTheme() {
-  var html = document.documentElement;
-  var next = html.getAttribute(THEME_ATTR) === DARK ? LIGHT : DARK;
+  const html = document.documentElement;
+  const next = html.getAttribute(THEME_ATTR) === DARK ? LIGHT : DARK;
   html.setAttribute(THEME_ATTR, next);
   localStorage.setItem(THEME_STORAGE_KEY, next);
 }
 
-var toggle = document.getElementById('theme-toggle');
+const toggle = document.getElementById('theme-toggle');
 toggle.addEventListener('click', toggleTheme);
 toggle.addEventListener('keydown', function (e) {
   if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleTheme(); }
 });
 
-var FONT_OFFSET_KEY = 'fontOffset';
-var FONT_OFFSET_MIN = -2;
-var FONT_OFFSET_MAX = 4;
+// --- Font size ---
 
-var decreaseBtn = document.getElementById('font-decrease');
-var increaseBtn = document.getElementById('font-increase');
+const FONT_OFFSET_KEY = 'fontOffset';
+const FONT_OFFSET_MIN = -2;
+const FONT_OFFSET_MAX = 4;
 
+const decreaseBtn = document.getElementById('font-decrease');
+const increaseBtn = document.getElementById('font-increase');
+
+function getFontOffset() {
+  return parseInt(localStorage.getItem(FONT_OFFSET_KEY) || '0', 10);
+}
+
+// Apply persisted font offset on load
 (function () {
-  var offset = parseInt(localStorage.getItem(FONT_OFFSET_KEY) || '0', 10);
+  const offset = getFontOffset();
   applyFontOffset(offset);
   updateFontOffsetButtons(offset);
 })();
@@ -48,8 +58,7 @@ function applyFontOffset(offset) {
 }
 
 function changeFontOffset(delta) {
-  var current = parseInt(localStorage.getItem(FONT_OFFSET_KEY) || '0', 10);
-  var next = Math.min(FONT_OFFSET_MAX, Math.max(FONT_OFFSET_MIN, current + delta));
+  const next = Math.min(FONT_OFFSET_MAX, Math.max(FONT_OFFSET_MIN, getFontOffset() + delta));
   applyFontOffset(next);
   localStorage.setItem(FONT_OFFSET_KEY, String(next));
   updateFontOffsetButtons(next);

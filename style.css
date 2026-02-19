@@ -1,13 +1,11 @@
 /* Reset */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Layout tokens */
+/* Tokens — light mode defaults */
 :root {
+  /* Layout */
   --indent: 18px;
-}
-
-/* Colour tokens — light mode defaults */
-:root {
+  /* Colour */
   --bg: #f0f0f0;
   --page-bg: #fff;
   --text: #111;
