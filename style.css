@@ -58,7 +58,7 @@ html { font-size: 10pt; } /* print fallback — unchanged */
   .page { width: var(--page-width, 210mm); }
 }
 body { font-family: 'IBM Plex Sans', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.4; }
-.page { background: var(--page-bg); width: 210mm; margin: 24px auto; padding: 16mm 18mm; box-shadow: 0 2px 16px var(--shadow); }
+.page { background: var(--page-bg); margin: 24px auto; padding: 16mm 18mm; box-shadow: 0 2px 16px var(--shadow); }
 
 /* Header */
 .header-name { font-size: 2rem; font-weight: 700; margin-bottom: 2px; }
