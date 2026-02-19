@@ -21,7 +21,7 @@
   --link-deco: rgba(0,0,0,0.6);
   --link-deco-hover: rgba(0,0,0,0.7);
   --shadow: rgba(0,0,0,0.12);
-  --toggle-track: #bbb;
+  --ctrl-bg: #bbb;
   --toggle-knob: white;
   --toggle-sun-opacity: 1;
   --toggle-moon-opacity: 0.35;
@@ -43,7 +43,7 @@
     --link-deco: rgba(255,255,255,0.5);
     --link-deco-hover: rgba(255,255,255,0.7);
     --shadow: rgba(0,0,0,0.5);
-    --toggle-track: #555;
+    --ctrl-bg: #555;
     --toggle-sun-opacity: 0.35;
     --toggle-moon-opacity: 1;
     --toggle-knob-x: 18px; /* knob travel distance */
@@ -115,7 +115,7 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
   width: 38px;
   height: 20px;
   border-radius: 10px;
-  background: var(--toggle-track);
+  background: var(--ctrl-bg);
   position: relative;
   transition: background 0.2s;
   flex-shrink: 0;
@@ -146,7 +146,7 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
 }
 
 #font-size-control button {
-  background: var(--toggle-track);
+  background: var(--ctrl-bg);
   border: none;
   cursor: pointer;
   font-size: var(--ctrl-size);
