@@ -65,33 +65,28 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
 
 /* Sections */
 .section { margin-bottom: 11px; }
-.section-heading { font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.1px; border-bottom: 1px solid var(--border); padding-bottom: 1px; margin-bottom: 6px; }
-.summary { font-size: 1rem; line-height: 1.45; }
+.section-heading { font-size: 1rem; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid var(--border); padding-bottom: 1px; margin-bottom: 6px; }
+.summary { font-size: 1rem; }
 
 /* Content hierarchy: company > job > meta > bullets */
+.date { font-size: 0.9rem; color: var(--text-muted); white-space: nowrap; }
 .company { font-size: 1rem; font-weight: 700; margin-top: 6px; }
 .company-line { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 2px; }
 .job { margin-bottom: 3px; }
 .job-line { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-left: 0.5em; margin-bottom: 2px; } /* indented under company */
 .job-title { font-size: 1rem; font-weight: 600; }
-.job-title a,
-.bullets a { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--link-deco); }
-.job-title a::after,
-.bullets a::after { content: ' ↗'; font-weight: 400; opacity: 0.35; }
-.job-title a::after { font-size: 0.75em; }
-.bullets a::after { font-size: 0.8em; }
-.job-title a:hover,
-.bullets a:hover { text-decoration-style: solid; text-decoration-color: var(--link-deco-hover); }
-.job-title a:hover::after,
-.bullets a:hover::after { opacity: 0.7; }
-.date { font-size: 0.9rem; color: var(--text-muted); white-space: nowrap; }
 .job-meta { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 4px; margin-left: 18px; } /* aligns with bullets */
 .company-meta { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 4px; margin-left: 0.5em; } /* aligns with job-line */
 .bullets { list-style: disc; padding-left: 18px; margin-top: 2px; }
-.bullets li { font-size: 1rem; line-height: 1.4; margin-bottom: 2px; }
+.bullets li { font-size: 1rem; margin-bottom: 2px; }
 
-/* Marks the start of page 2 in print */
-.page-break { }
+/* Subtle hyperlinking to prevent reader distractions */
+.job-title a,
+.bullets a { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--link-deco); }
+.job-title a::after,
+.bullets a::after { content: ' ↗'; font-size: 0.7em; }
+.job-title a:hover,
+.bullets a:hover { text-decoration-style: solid; text-decoration-color: var(--link-deco-hover); }
 
 /* Dark mode toggle — hidden in print */
 #theme-toggle {
@@ -188,11 +183,10 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
   html { font-size: calc(11pt + var(--font-offset, 0pt)); }
   body { background: var(--page-bg); }
   .page { width: 100%; padding: 16px; margin: 0; box-shadow: none; }
-  .summary { line-height: 1.5; }
   .section-heading { margin-bottom: 8px; }
   .company { margin-top: 10px; margin-bottom: 0; }
   .job-meta, .company-meta { margin-left: 0; margin-bottom: 6px; } /* remove indent — no room on mobile */
-  .bullets li { line-height: 1.5; margin-bottom: 4px; }
+  .bullets li { margin-bottom: 4px; }
   .company-line { flex-direction: column; align-items: flex-start; gap: 1px; }
   .job-line { flex-direction: column; align-items: flex-start; gap: 1px; margin-left: 0; } /* remove indent — no room on mobile */
   .bullets { margin-left: 20px; padding-left: 0; }
@@ -205,11 +199,4 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
   @page { size: A4; margin: 0; }
   /* Explicit page break before Best Friends Cafe; padding-top restores the margin lost when breaking mid-.page div */
   .page-break { page-break-before: always; padding-top: 14mm; }
-  /* Tighten vertical spacing to fit within 2 A4 pages */
-  .section { margin-bottom: 7px; }
-  hr.thin { margin: 2px 0; }
-  .company { margin-top: 2px; }
-  .job-meta, .company-meta { margin-bottom: 2px; }
-  /* Prevent other jobs splitting mid-bullet across pages */
-  .job { page-break-inside: avoid; }
 }
