@@ -38,6 +38,8 @@ toggle.addEventListener('keydown', function (e) {
 const FONT_OFFSET_KEY = 'fontOffset';
 const FONT_OFFSET_MIN = -2;
 const FONT_OFFSET_MAX = 4;
+const FONT_BASE_PT = 10;    // matches html { font-size: 10pt } in style.css
+const PAGE_WIDTH_MM = 210;  // matches A4 width; drives desktop page scaling
 
 const decreaseBtn = document.getElementById('font-decrease');
 const increaseBtn = document.getElementById('font-increase');
@@ -49,17 +51,19 @@ function getFontOffset() {
 // Apply persisted font offset on load
 (function () {
   const offset = getFontOffset();
-  applyFontOffset(offset);
+  applyFontSettings(offset);
   updateFontOffsetButtons(offset);
 })();
 
-function applyFontOffset(offset) {
+function applyFontSettings(offset) {
   document.documentElement.style.setProperty('--font-offset', offset + 'pt');
+  const pageWidth = PAGE_WIDTH_MM + Math.max(0, offset) * (PAGE_WIDTH_MM / FONT_BASE_PT);
+  document.documentElement.style.setProperty('--page-width', pageWidth + 'mm');
 }
 
 function changeFontOffset(delta) {
   const next = Math.min(FONT_OFFSET_MAX, Math.max(FONT_OFFSET_MIN, getFontOffset() + delta));
-  applyFontOffset(next);
+  applyFontSettings(next);
   localStorage.setItem(FONT_OFFSET_KEY, String(next));
   updateFontOffsetButtons(next);
 }
