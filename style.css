@@ -1,13 +1,18 @@
 /* Reset */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Layout tokens */
+:root {
+  --indent: 18px;
+}
+
 /* Colour tokens — light mode defaults */
 :root {
   --bg: #f0f0f0;
   --page-bg: #fff;
   --text: #111;
-  --text-sub: #444;
-  --text-minor: #333;
+  --text-sub: #444;   /* header subtitle */
+  --text-minor: #333; /* header contact — darker than --text-sub despite the name */
   --text-muted: #555;
   --border: #111;
   --border-thin: #ccc;
@@ -40,7 +45,7 @@
     --toggle-track: #555;
     --toggle-sun-opacity: 0.35;
     --toggle-moon-opacity: 1;
-    --toggle-knob-x: 18px;
+    --toggle-knob-x: 18px; /* knob travel distance */
   }
 }
 
@@ -75,9 +80,9 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
 .job { margin-bottom: 3px; }
 .job-line { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-left: 0.5em; margin-bottom: 2px; } /* indented under company */
 .job-title { font-size: 1rem; font-weight: 600; }
-.job-meta { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 4px; margin-left: 18px; } /* aligns with bullets */
+.job-meta { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 4px; margin-left: var(--indent); }
 .company-meta { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 4px; margin-left: 0.5em; } /* aligns with job-line */
-.bullets { list-style: disc; padding-left: 18px; margin-top: 2px; }
+.bullets { list-style: disc; padding-left: var(--indent); margin-top: 2px; }
 .bullets li { font-size: 1rem; margin-bottom: 2px; }
 
 /* Subtle hyperlinking to prevent reader distractions */
@@ -88,7 +93,7 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
 .job-title a:hover,
 .bullets a:hover { text-decoration-style: solid; text-decoration-color: var(--link-deco-hover); }
 
-/* Dark mode toggle — hidden in print */
+/* Dark mode toggle */
 #theme-toggle {
   position: fixed;
   top: 14px;
@@ -124,11 +129,8 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
   transform: translateX(var(--toggle-knob-x));
   transition: transform 0.2s ease;
 }
-@media print {
-  #theme-toggle { display: none; }
-}
 
-/* Font size control — hidden in print */
+/* Font size control */
 #font-size-control {
   position: fixed;
   top: 44px;
@@ -174,17 +176,13 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
   line-height: 1;
 }
 
-@media print {
-  #font-size-control { display: none; }
-}
-
 /* Mobile portrait — full width, larger text for readability */
 @media screen and (max-width: 768px) {
   html { font-size: calc(11pt + var(--font-offset, 0pt)); }
   body { background: var(--page-bg); }
   .page { width: 100%; padding: 16px; margin: 0; box-shadow: none; }
   .section-heading { margin-bottom: 8px; }
-  .company { margin-top: 10px; margin-bottom: 0; }
+  .company { margin-top: 10px; }
   .job-meta, .company-meta { margin-left: 0; margin-bottom: 6px; } /* remove indent — no room on mobile */
   .bullets li { margin-bottom: 4px; }
   .company-line { flex-direction: column; align-items: flex-start; gap: 1px; }
@@ -193,6 +191,9 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
 }
 
 @media print {
+  /* Hide screen-only controls */
+  #theme-toggle { display: none; }
+  #font-size-control { display: none; }
   /* Remove screen chrome */
   body { background: white; line-height: 1.3; } /* tighter line-height recovers space across all wrapped bullet lines */
   .page { margin: 0; box-shadow: none; width: 100%; padding: 14mm 16mm; }
