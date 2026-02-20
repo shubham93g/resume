@@ -77,20 +77,3 @@ function updateFontOffsetButtons(offset) {
 decreaseBtn.addEventListener('click', function () { changeFontOffset(-1); });
 increaseBtn.addEventListener('click', function () { changeFontOffset(+1); });
 
-// --- PDF Share ---
-
-const shareBtn = document.getElementById('share-btn');
-const PDF_URL = document.getElementById('download-btn').getAttribute('href');
-
-shareBtn.addEventListener('click', async function () {
-  const url = new URL(PDF_URL, location.href).href;
-  if (navigator.share) {
-    try {
-      await navigator.share({ url: url });
-      return;
-    } catch (err) {
-      if (err.name === 'AbortError') return; // user dismissed share sheet
-    }
-  }
-  window.open(url, '_blank', 'noopener,noreferrer');
-});
