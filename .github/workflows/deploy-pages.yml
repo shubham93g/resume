@@ -4,13 +4,7 @@ on:
   push:
     branches: [main]
     paths-ignore:
-      - 'resume.pdf'    # committed by generate-pdf — deploy triggered via workflow_run instead
-      - 'index.html'    # triggers generate-pdf — deploy after PDF is ready via workflow_run
-      - 'style.css'     # triggers generate-pdf — deploy after PDF is ready via workflow_run
-  workflow_run:
-    workflows: ["Generate PDF"]
-    types: [completed]
-    branches: [main]
+      - 'resume.pdf'    # committed by generate-pdf bot — ignore to avoid a second deployment
 
 permissions:
   contents: read
@@ -24,23 +18,15 @@ concurrency:
 
 jobs:
   deploy:
-    # For workflow_run events, only proceed if the PDF generation succeeded
-    if: github.event_name == 'push' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-        # Default checkout fetches main HEAD — correct for both trigger types.
-        # For workflow_run, main HEAD already includes the PDF commit by the
-        # time this job runs, so no ref pinning needed.
-
       - uses: actions/configure-pages@v4
-
       - uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
-
       - id: deployment
         uses: actions/deploy-pages@v4
