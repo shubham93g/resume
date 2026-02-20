@@ -76,3 +76,26 @@ function updateFontOffsetButtons(offset) {
 
 decreaseBtn.addEventListener('click', function () { changeFontOffset(-1); });
 increaseBtn.addEventListener('click', function () { changeFontOffset(+1); });
+
+// --- PDF Share / Download ---
+
+const downloadBtn = document.getElementById('download-btn');
+const PDF_URL = 'resume.pdf';
+const PDF_FILENAME = 'Shubham Goyal - Senior Software Engineer.pdf';
+
+downloadBtn.addEventListener('click', async function (e) {
+  e.preventDefault();
+  if (navigator.share && navigator.canShare) {
+    try {
+      const blob = await fetch(PDF_URL).then(function (r) { return r.blob(); });
+      const file = new File([blob], PDF_FILENAME, { type: 'application/pdf' });
+      if (navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file] });
+        return;
+      }
+    } catch (err) {
+      if (err.name === 'AbortError') return; // user dismissed share sheet
+    }
+  }
+  window.open(PDF_URL, '_blank', 'noopener,noreferrer');
+});
