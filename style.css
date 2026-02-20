@@ -5,7 +5,7 @@
 :root {
   /* Layout */
   --indent: 18px;
-  --ctrl-size: 13px;  /* icon/text size for fixed controls (toggle, font buttons) */
+  --ctrl-size: 14px;  /* icon/text size for fixed controls (toggle, font buttons) */
   --ctrl-right: 16px; /* right-edge anchor for fixed controls */
   --ctrl-gap: 6px;    /* internal gap within fixed controls */
   /* Colour */
@@ -105,7 +105,7 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 11px;
   z-index: 100;
   user-select: none;
 }
@@ -154,8 +154,8 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
   border: none;
   cursor: pointer;
   font-size: var(--ctrl-size);
-  width: 18px;
-  height: 18px;
+  width: 19px;
+  height: 19px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -189,9 +189,9 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
 
 /* Icon buttons — download etc. */
 .icon-btn {
-  width: 24px;
-  height: 24px;
-  font-size: 18px;
+  width: 25px;
+  height: 25px;
+  font-size: 19px;
   display: flex;
   align-items: center;
   justify-content: center;
