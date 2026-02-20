@@ -77,25 +77,20 @@ function updateFontOffsetButtons(offset) {
 decreaseBtn.addEventListener('click', function () { changeFontOffset(-1); });
 increaseBtn.addEventListener('click', function () { changeFontOffset(+1); });
 
-// --- PDF Share / Download ---
+// --- PDF Share ---
 
-const downloadBtn = document.getElementById('download-btn');
-const PDF_URL = 'resume.pdf';
-const PDF_FILENAME = 'Shubham Goyal - Senior Software Engineer.pdf';
+const shareBtn = document.getElementById('share-btn');
+const PDF_URL = document.getElementById('download-btn').getAttribute('href');
 
-downloadBtn.addEventListener('click', async function (e) {
-  e.preventDefault();
-  if (navigator.share && navigator.canShare) {
+shareBtn.addEventListener('click', async function () {
+  const url = new URL(PDF_URL, location.href).href;
+  if (navigator.share) {
     try {
-      const blob = await fetch(PDF_URL).then(function (r) { return r.blob(); });
-      const file = new File([blob], PDF_FILENAME, { type: 'application/pdf' });
-      if (navigator.canShare({ files: [file] })) {
-        await navigator.share({ files: [file] });
-        return;
-      }
+      await navigator.share({ url: url });
+      return;
     } catch (err) {
       if (err.name === 'AbortError') return; // user dismissed share sheet
     }
   }
-  window.open(PDF_URL, '_blank', 'noopener,noreferrer');
+  window.open(url, '_blank', 'noopener,noreferrer');
 });
