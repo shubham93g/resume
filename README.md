@@ -1,1 +1,1 @@
-[![pages-build-deployment](https://github.com/shubham93g/resume/actions/workflows/pages/pages-build-deployment/badge.svg?branch=main)](https://github.com/shubham93g/resume/actions/workflows/pages/pages-build-deployment)
+https://shubham93g.github.io/resume/
