@@ -3,7 +3,7 @@ name: Generate PDF
 on:
   push:
     branches: [main]
-    paths: [index.html, style.css]
+    paths-ignore: [resume.pdf]
   workflow_dispatch:
 
 permissions:
