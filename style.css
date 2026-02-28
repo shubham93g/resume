@@ -74,8 +74,8 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
 .section { margin-bottom: 11px; }
 .section-heading { font-size: 1rem; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid var(--border); padding-bottom: 1px; margin-bottom: 6px; }
 .summary { font-size: 1rem; }
-.skill-row { display: flex; gap: 1rem; margin-bottom: 2px; }
-.skill-label { min-width: 7.5rem; font-weight: 600; flex-shrink: 0; }
+.skill-row { margin-bottom: 2px; }
+.skill-label { font-weight: 600; }
 
 /* Content hierarchy: company > job > meta > bullets */
 .date { font-size: 0.9rem; color: var(--text-muted); white-space: nowrap; }
