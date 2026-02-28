@@ -21,7 +21,10 @@ const puppeteer = require('puppeteer');
     path: 'resume.pdf',
     format: 'A4',
     margin: { top: '0', right: '0', bottom: '0', left: '0' },
-    printBackground: false
+    printBackground: false,
+    // tagged generates a PDF with a proper text layer, enabling text selection
+    // and copy-paste in PDF viewers
+    tagged: true
   });
 
   await browser.close();
