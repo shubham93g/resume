@@ -9,6 +9,11 @@
 - Avoid overrides unless necessary — prefer updating the base rule
 - Keep ATS compatibility in mind — use standard section headings, avoid tables for key content, ensure technologies and keywords are explicitly listed
 
+## Fonts
+- IBM Plex Sans is self-hosted as TTF files in `fonts/` (Regular, SemiBold, Bold) — do NOT switch back to Google Fonts
+- Google Fonts serves WOFF2, which when embedded by Chrome's PDF engine produces incomplete ToUnicode CMap tables, breaking text selection in PDF viewers (notably macOS Preview)
+- TTF embedding preserves the full character mapping, making text in the generated PDF selectable and copyable
+
 ## Workflow
 - Always review changes locally before committing or pushing
 - Commit logical groups of changes together with clear messages
