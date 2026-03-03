@@ -114,8 +114,8 @@ async function getFontOffset(page, params) {
       });
       // /Type /Page (word boundary) matches page objects, not the /Type /Pages tree root
       const pageCount = (pdf.toString('latin1').match(/\/Type\s*\/Page\b/g) || []).length;
-      if (pageCount !== 2) {
-        throw new Error(`Expected 2 pages, got ${pageCount}`);
+      if (pageCount !== 3) { // TEST BREAKAGE: expecting 3 pages instead of 2
+        throw new Error(`Expected 3 pages, got ${pageCount}`);
       }
     });
     await page.close();

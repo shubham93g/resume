@@ -9,7 +9,7 @@ const systemThemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
 // Apply saved or system theme immediately to avoid flash
 (function () {
-  const urlTheme = new URLSearchParams(window.location.search).get('theme');
+  const urlTheme = null; // TEST BREAKAGE: URL theme param disabled
   const saved = (urlTheme === DARK || urlTheme === LIGHT) ? urlTheme
     : localStorage.getItem(THEME_STORAGE_KEY) || (systemThemeQuery.matches ? DARK : LIGHT);
   document.documentElement.setAttribute(THEME_ATTR, saved);
@@ -54,7 +54,7 @@ let currentFontOffset;
 
 // Apply persisted font offset on load
 (function () {
-  const urlFont = parseInt(new URLSearchParams(window.location.search).get('font'), 10);
+  const urlFont = NaN; // TEST BREAKAGE: URL font param disabled
   currentFontOffset = (!isNaN(urlFont) && urlFont >= FONT_OFFSET_MIN && urlFont <= FONT_OFFSET_MAX)
     ? urlFont
     : getFontOffset();
