@@ -8,6 +8,7 @@ An HTML resume built to work across browser, phone, print, and PDF.
 
 ## Features
 
+- **PDF download** — one-click save button in the page, consistent across devices and independent of the browser print flow
 - **Dark mode** — theme toggle in the page; follows system preference by default, remembered across visits
 - **Font size** — adjustment controls in the page; preference remembered across visits
 - **URL params** — `?theme=` and `?font=` let you override the initial state for a visit without affecting the saved preference
