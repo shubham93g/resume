@@ -9,7 +9,9 @@ const systemThemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
 // Apply saved or system theme immediately to avoid flash
 (function () {
-  const saved = localStorage.getItem(THEME_STORAGE_KEY) || (systemThemeQuery.matches ? DARK : LIGHT);
+  const urlTheme = new URLSearchParams(window.location.search).get('theme');
+  const saved = (urlTheme === DARK || urlTheme === LIGHT) ? urlTheme
+    : localStorage.getItem(THEME_STORAGE_KEY) || (systemThemeQuery.matches ? DARK : LIGHT);
   document.documentElement.setAttribute(THEME_ATTR, saved);
 })();
 
@@ -50,7 +52,10 @@ function getFontOffset() {
 
 // Apply persisted font offset on load
 (function () {
-  const offset = getFontOffset();
+  const urlFont = parseInt(new URLSearchParams(window.location.search).get('font'), 10);
+  const offset = (!isNaN(urlFont) && urlFont >= FONT_OFFSET_MIN && urlFont <= FONT_OFFSET_MAX)
+    ? urlFont
+    : getFontOffset();
   applyFontSettings(offset);
   updateFontOffsetButtons(offset);
 })();
