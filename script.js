@@ -50,14 +50,16 @@ function getFontOffset() {
   return parseInt(localStorage.getItem(FONT_OFFSET_KEY) || '0', 10);
 }
 
+let currentFontOffset;
+
 // Apply persisted font offset on load
 (function () {
   const urlFont = parseInt(new URLSearchParams(window.location.search).get('font'), 10);
-  const offset = (!isNaN(urlFont) && urlFont >= FONT_OFFSET_MIN && urlFont <= FONT_OFFSET_MAX)
+  currentFontOffset = (!isNaN(urlFont) && urlFont >= FONT_OFFSET_MIN && urlFont <= FONT_OFFSET_MAX)
     ? urlFont
     : getFontOffset();
-  applyFontSettings(offset);
-  updateFontOffsetButtons(offset);
+  applyFontSettings(currentFontOffset);
+  updateFontOffsetButtons(currentFontOffset);
 })();
 
 function applyFontSettings(offset) {
@@ -67,7 +69,8 @@ function applyFontSettings(offset) {
 }
 
 function changeFontOffset(delta) {
-  const next = Math.min(FONT_OFFSET_MAX, Math.max(FONT_OFFSET_MIN, getFontOffset() + delta));
+  const next = Math.min(FONT_OFFSET_MAX, Math.max(FONT_OFFSET_MIN, currentFontOffset + delta));
+  currentFontOffset = next;
   applyFontSettings(next);
   localStorage.setItem(FONT_OFFSET_KEY, String(next));
   updateFontOffsetButtons(next);
