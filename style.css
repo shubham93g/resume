@@ -244,9 +244,12 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
   .bullets { margin-left: 20px; padding-left: 0; }
 }
 
+.print-only { display: none; }
+
 @media print {
   /* Hide screen-only controls */
   #controls { display: none; }
+  .print-only { display: inline; }
   /* Remove screen chrome */
   body { background: white; line-height: 1.3; } /* tighter line-height recovers space across all wrapped bullet lines */
   .page { margin: 0; box-shadow: none; width: 100%; padding: 14mm 16mm; }
