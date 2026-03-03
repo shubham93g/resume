@@ -111,7 +111,7 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
 .job-meta { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 4px; margin-left: var(--indent); }
 .company-meta { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 4px; margin-left: 0.5em; } /* aligns with job-line */
 .bullets { list-style: disc; padding-left: var(--indent); margin-top: 2px; }
-.bullets li { font-size: 1rem; margin-bottom: 1px; }
+.bullets li { font-size: 1rem; margin-bottom: 2px; }
 
 /* Subtle hyperlinking to prevent reader distractions */
 .job-title a,
