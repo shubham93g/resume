@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-const { BASE_URL, LAUNCH_OPTIONS, PDF_OPTIONS } = require('./puppeteer-config');
+const { BASE_URL, LAUNCH_OPTIONS, GOTO_OPTIONS, PDF_OPTIONS } = require('./puppeteer-config');
 
 (async () => {
   const browser = await puppeteer.launch(LAUNCH_OPTIONS);
@@ -7,7 +7,7 @@ const { BASE_URL, LAUNCH_OPTIONS, PDF_OPTIONS } = require('./puppeteer-config');
 
   // networkidle0 waits until there are no in-flight network requests for 500ms,
   // ensuring fonts have fully loaded before the PDF is captured
-  await page.goto(BASE_URL, { waitUntil: 'networkidle0' });
+  await page.goto(BASE_URL, GOTO_OPTIONS);
 
   // path is relative to the working directory (repo root)
   await page.pdf({ path: 'resume.pdf', ...PDF_OPTIONS });

@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
-const { BASE_URL, LAUNCH_OPTIONS, PDF_OPTIONS } = require('./puppeteer-config');
+const { BASE_URL, LAUNCH_OPTIONS, GOTO_OPTIONS, PDF_OPTIONS } = require('./puppeteer-config');
 const FONT_OFFSET_MIN = -2;
 const FONT_OFFSET_MAX = 4;
 
@@ -18,12 +18,12 @@ async function validate(description, fn) {
 }
 
 async function getTheme(page, params) {
-  await page.goto(`${BASE_URL}/${params ? '?' + params : ''}`, { waitUntil: 'networkidle0' });
+  await page.goto(`${BASE_URL}/${params ? '?' + params : ''}`, GOTO_OPTIONS);
   return page.evaluate(() => document.documentElement.getAttribute('data-theme'));
 }
 
 async function getFontOffset(page, params) {
-  await page.goto(`${BASE_URL}/?${params}`, { waitUntil: 'networkidle0' });
+  await page.goto(`${BASE_URL}/?${params}`, GOTO_OPTIONS);
   const raw = await page.evaluate(() =>
     document.documentElement.style.getPropertyValue('--font-offset').trim()
   );
@@ -103,7 +103,7 @@ async function getFontOffset(page, params) {
   {
     const page = await browser.newPage();
     await validate('PDF is exactly 2 pages', async () => {
-      await page.goto(BASE_URL, { waitUntil: 'networkidle0' });
+      await page.goto(BASE_URL, GOTO_OPTIONS);
       const pdf = await page.pdf(PDF_OPTIONS);
       // /Type /Page (word boundary) matches page objects, not the /Type /Pages tree root
       const pageCount = (pdf.toString('latin1').match(/\/Type\s*\/Page\b/g) || []).length;

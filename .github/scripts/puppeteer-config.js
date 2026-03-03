@@ -12,6 +12,10 @@ const LAUNCH_OPTIONS = {
 // tagged generates a PDF with a proper text layer, enabling text selection
 // and copy-paste in PDF viewers. Also preserves ToUnicode CMap tables when
 // using self-hosted TTF fonts (vs WOFF2 via Google Fonts).
+// networkidle0 waits until there are no in-flight network requests for 500ms,
+// ensuring fonts have fully loaded before the page is inspected or captured
+const GOTO_OPTIONS = { waitUntil: 'networkidle0' };
+
 const PDF_OPTIONS = {
   format: 'A4',
   margin: { top: '0', right: '0', bottom: '0', left: '0' },
@@ -19,4 +23,4 @@ const PDF_OPTIONS = {
   tagged: true,
 };
 
-module.exports = { BASE_URL, LAUNCH_OPTIONS, PDF_OPTIONS };
+module.exports = { BASE_URL, LAUNCH_OPTIONS, GOTO_OPTIONS, PDF_OPTIONS };
