@@ -14,6 +14,13 @@
 - Google Fonts serves WOFF2, which when embedded by Chrome's PDF engine produces incomplete ToUnicode CMap tables, breaking text selection in PDF viewers (notably macOS Preview)
 - TTF embedding preserves the full character mapping, making text in the generated PDF selectable and copyable
 
+## URL Parameters
+- `?theme=dark` and `?theme=light` override the initial theme for that visit (without persisting to localStorage)
+- `?font=N` overrides the initial font size offset for that visit (without persisting); N must be an integer within `[-2, 4]`
+- These params must remain **backward compatible** — never remove or rename them, never change their semantics
+- Invalid/unknown param values must silently fall back to localStorage → system preference, never throw or break the page
+- The print-only link in `.header-contact` depends on `?theme=dark&font=1` — keep that URL valid
+
 ## Workflow
 - Always review changes locally before committing or pushing
 - Commit logical groups of changes together with clear messages
