@@ -91,11 +91,11 @@ body { font-family: 'IBM Plex Sans', Arial, sans-serif; background: var(--bg); c
 .header-contact a { color: var(--link); text-decoration: underline; } /* visually identifiable as hyperlinks */
 
 /* Dividers: thick between header and content, thin between jobs */
-hr { border: none; border-top: 1.5px solid var(--border); margin: 8px 0 10px 0; }
+hr { border: none; border-top: 1.5px solid var(--border); margin: 8px 0 8px 0; }
 hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
 
 /* Sections */
-.section { margin-bottom: 11px; }
+.section { margin-bottom: 10px; }
 .section-heading { font-size: 1rem; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid var(--border); padding-bottom: 1px; margin-bottom: 6px; }
 .summary { font-size: 1rem; }
 .skill-row { margin-bottom: 2px; }
@@ -103,15 +103,15 @@ hr.thin { border-top: 1px solid var(--border-thin); margin: 7px 0; }
 
 /* Content hierarchy: company > job > meta > bullets */
 .date { font-size: 0.9rem; color: var(--text-muted); white-space: nowrap; }
-.company { font-size: 1rem; font-weight: 700; margin-top: 3px; }
-.company-line { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 2px; }
+.company { font-size: 1rem; font-weight: 700; }
+.company-line { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
 .job { margin-bottom: 3px; }
-.job-line { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-left: 0.5em; margin-bottom: 2px; } /* indented under company */
+.job-line { display: flex; justify-content: space-between; align-items: baseline; margin-left: 0.5em; margin-bottom: 2px; } /* indented under company */
 .job-title { font-size: 1rem; font-weight: 600; }
 .job-meta { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 4px; margin-left: var(--indent); }
 .company-meta { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 4px; margin-left: 0.5em; } /* aligns with job-line */
 .bullets { list-style: disc; padding-left: var(--indent); margin-top: 2px; }
-.bullets li { font-size: 1rem; margin-bottom: 2px; }
+.bullets li { font-size: 1rem; margin-bottom: 1px; }
 
 /* Subtle hyperlinking to prevent reader distractions */
 .job-title a,
