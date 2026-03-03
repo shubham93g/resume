@@ -41,15 +41,15 @@ async function getFontOffset(page, params) {
     const page = await browser.newPage();
     await validate('?theme=dark applies dark theme', async () => {
       const theme = await getTheme(page, 'theme=dark');
-      if (theme !== 'dark') throw new Error(`Expected dark, got ${theme}`);
+      if (theme !== 'dark') { throw new Error(`Expected dark, got ${theme}`); }
     });
     await validate('?theme=light applies light theme', async () => {
       const theme = await getTheme(page, 'theme=light');
-      if (theme !== 'light') throw new Error(`Expected light, got ${theme}`);
+      if (theme !== 'light') { throw new Error(`Expected light, got ${theme}`); }
     });
     await validate('?theme=invalid does not crash', async () => {
       const theme = await getTheme(page, 'theme=invalid');
-      if (theme !== 'dark' && theme !== 'light') throw new Error(`Expected dark or light, got ${theme}`);
+      if (theme !== 'dark' && theme !== 'light') { throw new Error(`Expected dark or light, got ${theme}`); }
     });
     await page.close();
   }
@@ -59,30 +59,33 @@ async function getFontOffset(page, params) {
     const page = await browser.newPage();
     await validate('?font=1 applies +1 offset', async () => {
       const offset = await getFontOffset(page, 'font=1');
-      if (offset !== 1) throw new Error(`Expected 1, got ${offset}`);
+      if (offset !== 1) { throw new Error(`Expected 1, got ${offset}`); }
     });
     await validate('?font=-2 applies min boundary', async () => {
       const offset = await getFontOffset(page, 'font=-2');
-      if (offset !== FONT_OFFSET_MIN) throw new Error(`Expected ${FONT_OFFSET_MIN}, got ${offset}`);
+      if (offset !== FONT_OFFSET_MIN) { throw new Error(`Expected ${FONT_OFFSET_MIN}, got ${offset}`); }
     });
     await validate('?font=4 applies max boundary', async () => {
       const offset = await getFontOffset(page, 'font=4');
-      if (offset !== FONT_OFFSET_MAX) throw new Error(`Expected ${FONT_OFFSET_MAX}, got ${offset}`);
+      if (offset !== FONT_OFFSET_MAX) { throw new Error(`Expected ${FONT_OFFSET_MAX}, got ${offset}`); }
     });
     await validate('?font=-3 (below min) falls back gracefully', async () => {
       const offset = await getFontOffset(page, 'font=-3');
-      if (isNaN(offset) || offset < FONT_OFFSET_MIN || offset > FONT_OFFSET_MAX)
+      if (isNaN(offset) || offset < FONT_OFFSET_MIN || offset > FONT_OFFSET_MAX) {
         throw new Error(`Out of range: ${offset}`);
+      }
     });
     await validate('?font=5 (above max) falls back gracefully', async () => {
       const offset = await getFontOffset(page, 'font=5');
-      if (isNaN(offset) || offset < FONT_OFFSET_MIN || offset > FONT_OFFSET_MAX)
+      if (isNaN(offset) || offset < FONT_OFFSET_MIN || offset > FONT_OFFSET_MAX) {
         throw new Error(`Out of range: ${offset}`);
+      }
     });
     await validate('?font=abc falls back gracefully', async () => {
       const offset = await getFontOffset(page, 'font=abc');
-      if (isNaN(offset) || offset < FONT_OFFSET_MIN || offset > FONT_OFFSET_MAX)
+      if (isNaN(offset) || offset < FONT_OFFSET_MIN || offset > FONT_OFFSET_MAX) {
         throw new Error(`Out of range: ${offset}`);
+      }
     });
     await page.close();
   }
@@ -99,7 +102,7 @@ async function getFontOffset(page, params) {
       });
       // /Type /Page (word boundary) matches page objects, not the /Type /Pages tree root
       const pageCount = (pdf.toString('latin1').match(/\/Type\s*\/Page\b/g) || []).length;
-      if (pageCount !== 2) throw new Error(`Expected 2 pages, got ${pageCount}`);
+      if (pageCount !== 2) { throw new Error(`Expected 2 pages, got ${pageCount}`); }
     });
     await page.close();
   }
@@ -122,5 +125,5 @@ async function getFontOffset(page, params) {
     fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, md);
   }
 
-  if (failed > 0) process.exit(1);
+  if (failed > 0) { process.exit(1); }
 })();
