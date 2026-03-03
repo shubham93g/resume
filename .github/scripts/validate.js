@@ -1,7 +1,6 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
-
-const BASE_URL = 'http://localhost:8080';
+const { BASE_URL, LAUNCH_OPTIONS, PDF_OPTIONS } = require('./puppeteer-config');
 const FONT_OFFSET_MIN = -2;
 const FONT_OFFSET_MAX = 4;
 
@@ -32,9 +31,7 @@ async function getFontOffset(page, params) {
 }
 
 (async () => {
-  const browser = await puppeteer.launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
-  });
+  const browser = await puppeteer.launch(LAUNCH_OPTIONS);
 
   console.log('\nTheme params');
   {
@@ -107,11 +104,7 @@ async function getFontOffset(page, params) {
     const page = await browser.newPage();
     await validate('PDF is exactly 2 pages', async () => {
       await page.goto(BASE_URL, { waitUntil: 'networkidle0' });
-      const pdf = await page.pdf({
-        format: 'A4',
-        margin: { top: '0', right: '0', bottom: '0', left: '0' },
-        printBackground: false
-      });
+      const pdf = await page.pdf(PDF_OPTIONS);
       // /Type /Page (word boundary) matches page objects, not the /Type /Pages tree root
       const pageCount = (pdf.toString('latin1').match(/\/Type\s*\/Page\b/g) || []).length;
       if (pageCount !== 2) {

@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/puppeteer-server
+      - name: Validate
+        run: node .github/scripts/validate.js
+
+  generate-pdf:
+    needs: validate
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/puppeteer-server
+      - name: Generate PDF
+        run: node .github/scripts/generate-pdf.js
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume-pdf
+          path: resume.pdf
+
+  deploy:
+    needs: generate-pdf
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download PDF
+        uses: actions/download-artifact@v4
+        with:
+          name: resume-pdf
+          path: .
+      - uses: actions/configure-pages@v4
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          # Deploy the entire repo root. GitHub Pages automatically excludes
+          # dot-directories (.git, .github) so no sensitive files are served.
+          path: '.'
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -21,6 +21,14 @@
 - Invalid/unknown param values must silently fall back to localStorage → system preference, never throw or break the page
 - The print-only link in `.header-contact` depends on `?theme=dark&font=1` — keep that URL valid
 
+## CI/CD
+- A single `ci.yml` workflow runs on every push to main and every PR
+- Jobs run sequentially: `validate` → `generate-pdf` → `deploy` (the last two are skipped on PRs)
+- `validate` is the required branch protection check — keep that job name unchanged
+- The PDF is generated in CI and served via GitHub Pages; it is **not** committed to the repo (`resume.pdf` is gitignored)
+- Shared Puppeteer config (launch args, PDF options) lives in `.github/scripts/puppeteer-config.js` — edit there, not in individual scripts
+- Shared CI setup (Node, Puppeteer install, HTTP server) is a composite action in `.github/actions/puppeteer-server/`
+
 ## Workflow
 - Always review changes locally before committing or pushing
 - Commit logical groups of changes together with clear messages

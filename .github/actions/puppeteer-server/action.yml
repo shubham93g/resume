@@ -1,0 +1,19 @@
+name: Puppeteer + Server
+description: Installs Puppeteer, starts a local HTTP server, and waits for it to be ready
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+    - name: Install Puppeteer
+      shell: bash
+      working-directory: .github/scripts
+      run: npm install
+    - name: Start local server
+      shell: bash
+      run: python3 -m http.server 8080 &
+    - name: Wait for server
+      shell: bash
+      run: curl --retry 10 --retry-delay 1 --retry-connrefused -s http://localhost:8080 > /dev/null
