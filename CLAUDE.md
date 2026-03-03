@@ -24,7 +24,7 @@
 ## CI/CD
 - A single `ci.yml` workflow runs on every push to main and every PR
 - Jobs run sequentially: `validate` → `generate-pdf` → `deploy` (the last two are skipped on PRs)
-- `validate` is the required branch protection check — keep that job name unchanged
+- `CI / validate` is the required branch protection check — keep both the workflow name (`CI`) and job name (`validate`) unchanged
 - The PDF is generated in CI and served via GitHub Pages; it is **not** committed to the repo (`resume.pdf` is gitignored)
 - Shared Puppeteer config (launch args, PDF options) lives in `.github/scripts/puppeteer-config.js` — edit there, not in individual scripts
 - Shared CI setup (Node, Puppeteer install, HTTP server) is a composite action in `.github/actions/puppeteer-server/`
