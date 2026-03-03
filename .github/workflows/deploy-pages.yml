@@ -28,6 +28,8 @@ jobs:
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:
+          # Deploy the entire repo root. GitHub Pages automatically excludes
+          # dot-directories (.git, .github) so no sensitive files are served.
           path: '.'
       - id: deployment
         uses: actions/deploy-pages@v4
