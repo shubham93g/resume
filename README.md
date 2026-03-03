@@ -24,7 +24,7 @@ Results are written to the GitHub Actions step summary as a table, so failures a
 
 ### PDF generation
 
-The `generate-pdf` job renders the page using `?theme=dark&font=1` for a consistent output regardless of the CI environment's system theme. Two Puppeteer settings matter for producing a usable PDF:
+The `generate-pdf` job renders the page at the base URL with no overrides. Two Puppeteer settings matter for producing a usable PDF:
 
 - `waitUntil: 'networkidle0'` ensures the self-hosted fonts have fully loaded before the page is captured.
 - `tagged: true` tells Chromium's PDF engine to emit a tagged PDF with a proper text layer — this is what preserves the ToUnicode CMap tables that make text in the PDF selectable and copyable.
